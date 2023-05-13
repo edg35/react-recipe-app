@@ -15,7 +15,7 @@ const RecipeCard = ({ recipe }) => {
         const getData = async () => {
             const res = await axios.get(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`)
             setData(res.data.meals[0])
-            console.log(res.data.meals[0])
+            setIsLoading(false)
         }
 
         if(isLoading){
@@ -27,7 +27,7 @@ const RecipeCard = ({ recipe }) => {
     <Card>
         <CardHeader 
             title={recipe.strMeal}
-            subheader="30min | 450cal"
+            subheader={`${data.strArea} | ${data.strCategory} | $`}
             action={
                 <IconButton aria-label="add to favorites" size="large" onClick={() =>{
                     if(!user){
