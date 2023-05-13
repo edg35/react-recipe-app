@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, CardHeader, CardMedia, IconButton, CardContent, Typography } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import useUser from '../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const RecipeCard = () => {
+const RecipeCard = ({ recipe }) => {
     const { user } = useUser();
     const navigate = useNavigate();
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const getData = async () => {
+            const res = await axios.get(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`)
+            setData(res.data.meals[0])
+            console.log(res.data.meals[0])
+        }
+
+        if(isLoading){
+            getData();
+        }
+    }, []);
 
   return (
     <Card>
         <CardHeader 
-            title="Shrimp and Chorizo Paella"
+            title={recipe.strMeal}
             subheader="30min | 450cal"
             action={
                 <IconButton aria-label="add to favorites" size="large" onClick={() =>{
@@ -26,7 +41,7 @@ const RecipeCard = () => {
         <CardMedia
             component="img"
             height="194"
-              src="https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              src={recipe.strMealThumb}
             alt="food"
         />
         <CardContent className='recipe-card-content'>
