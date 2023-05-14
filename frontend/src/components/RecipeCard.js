@@ -13,7 +13,7 @@ const RecipeCard = ({ recipe }) => {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await axios.get(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`)
+            const res = await axios.get(`api/search/${data.idMeal}`)
             setData(res.data.meals[0])
             setIsLoading(false)
         }
