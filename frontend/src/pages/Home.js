@@ -1,8 +1,8 @@
 import React from 'react';
 import '../App.css';
 import QuisineCard from '../components/QuisineCard';
-import RecipeCard from '../components/RecipeCard';
 import { Grid } from '@mui/material';
+import RandomRecipeCard from '../components/RandomRecipeCard';
 
 const options = [
   {
@@ -62,16 +62,16 @@ const Home = () => {
         <h2>Featured Recipes</h2>
         <Grid container spacing={4} sx={{ width: '100%' }}>
           <Grid item xs={12} sm={6} md={3}>
-            <RecipeCard />
+            <RandomRecipeCard />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <RecipeCard />
+            <RandomRecipeCard />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <RecipeCard />
+            <RandomRecipeCard />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <RecipeCard />
+            <RandomRecipeCard />
           </Grid>
         </Grid>
       </div>
