@@ -8,32 +8,26 @@ import axios from 'axios';
 const RandomRecipeCard = () => {
   const { user } = useUser();
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [recipe, setRecipe] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getRecipe = async () => {
-      const response = await axios.get('http://www.themealdb.com/api/json/v1/1/random.php', {
-        headers: {
-          'Access-Control-Allow-Origin': 'http://www.themealdb.com',
-        }
-      });
-      setData(response.data);
-      setIsLoading(false);
-      console.log(response.data);
+      const res = await axios.get('/api/recipe/random');
+      setRecipe(res.meals);
+      setLoading(false);
     }
 
-    if(isLoading) {
+    if(loading) {
       getRecipe();
     }
-
-  }, []);
+  }, [])
 
   return (
-    <Card>
+   <Card>
         <CardHeader 
-            title={data.strMeal}
-            subheader={`${data.strArea} | ${data.strCategory} | $`}
+            title={recipe.strMeal}
+            subheader={`${recipe.strArea} | ${recipe.strCategory} | $`}
             action={
                 <IconButton aria-label="add to favorites" size="large" onClick={() =>{
                     if(!user){
@@ -47,7 +41,7 @@ const RandomRecipeCard = () => {
         <CardMedia
             component="img"
             height="194"
-              src={data.strMealThumb}
+            src={recipe.strMealThumb}
             alt="food"
         />
         <CardContent className='recipe-card-content'>
