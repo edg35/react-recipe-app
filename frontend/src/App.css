@@ -71,6 +71,10 @@
   padding: 15px;
 }
 
+.recipelist-container h3 {
+  padding-left: 15px;
+}
+
 @media only screen and (max-width: 600px) {
   .hero-section {
     max-height: 20vh;

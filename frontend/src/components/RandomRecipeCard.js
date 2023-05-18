@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardHeader, CardMedia, IconButton, CardContent, Typography } from '@mui/material';
+import { Card, CardHeader, CardMedia, IconButton } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import useUser from '../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
@@ -13,21 +13,27 @@ const RandomRecipeCard = () => {
 
   useEffect(() => {
     const getRecipe = async () => {
-      const res = await axios.get('/api/recipe/random');
-      setRecipe(res.meals);
-      setLoading(false);
+      try{
+        const res = await axios.get('/api/recipes/random');
+        setRecipe(res.data.meals[0]);
+        setLoading(false);
+      } catch(err){
+        console.log(err);
+        setLoading(false);
+      }
     }
 
     if(loading) {
       getRecipe();
     }
+
   }, [])
 
   return (
    <Card>
         <CardHeader 
             title={recipe.strMeal}
-            subheader={`${recipe.strArea} | ${recipe.strCategory} | $`}
+            subheader={`${recipe.strArea} | ${recipe.strCategory}`}
             action={
                 <IconButton aria-label="add to favorites" size="large" onClick={() =>{
                     if(!user){
@@ -44,13 +50,6 @@ const RandomRecipeCard = () => {
             src={recipe.strMealThumb}
             alt="food"
         />
-        <CardContent className='recipe-card-content'>
-            <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
-            </Typography>
-        </CardContent>
     </Card>
   )
 }

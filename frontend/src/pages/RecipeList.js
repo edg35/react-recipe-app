@@ -14,11 +14,10 @@ const RecipeList = () => {
   useEffect(() => {
    const getRecipes = async () => {
     try {
-      const response = await axios.get(`http://www.themealdb.com/api/json/v1/1/filter.php?c=${query}`);
+      const response = await axios.get(`/api/recipe/${query}`);
       const data = response.data;
       setRecipes(data.meals);
       setLoading(false);
-      console.log(data.meals);
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -29,7 +28,7 @@ const RecipeList = () => {
     getRecipes();
    }
 
-  },[query, loading]);
+  },[]);
 
 
   if(loading) {
@@ -40,7 +39,9 @@ const RecipeList = () => {
     <div className='recipelist-container'>
       {error ? <p>error</p>
       : <h3>{`Results for ${query}:`}</h3>}
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{
+        padding: '20px',
+      }}>
         {recipes.map((recipe) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={recipe.id}>
             <RecipeCard recipe={recipe} />

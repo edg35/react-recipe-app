@@ -2,7 +2,7 @@ import React from 'react'
 import { Paper, Typography, Avatar} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const QuisineCard = ({ src, text }) => {
+const QuisineCard = ({ op }) => {
   const navigate = useNavigate();
   return (
     <Paper sx={{ 
@@ -16,10 +16,10 @@ const QuisineCard = ({ src, text }) => {
         justifyContent:'center' 
       }} 
       elevation={3}
-      onClick={() => navigate(`/recipes/${text.toLowerCase()}`)}
+      onClick={() => navigate(`/recipes/${op.alt}`)}
     >
-        <Avatar sx={{ width: 40, height: 40 }} src={src}></Avatar>
-        <Typography variant="h5" component="h2">{text}</Typography>
+        <Avatar sx={{ width: 40, height: 40 }} src={op.src}></Avatar>
+        <Typography variant="h5" component="h2">{op.text}</Typography>
     </Paper>
   )
 }

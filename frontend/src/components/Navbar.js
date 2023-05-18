@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -19,7 +19,7 @@ import Button from '@mui/material/Button';
 
 import useUser from '../hooks/useUser';
 import { getAuth, signOut } from 'firebase/auth';
-import { useNavigate } from'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -67,6 +67,7 @@ const Navbar = () => {
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const { user } = useUser();
     const navigate = useNavigate();
+    const [search, setSearch] = useState('');
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -99,6 +100,10 @@ const Navbar = () => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const handleSearch = () => {
+        navigate(`/recipes/${search}`);
+    }
+
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -116,7 +121,6 @@ const Navbar = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            {user && <MenuItem>{`Welcome ${user.email}`}</MenuItem>}
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
             <MenuItem onClick={handleSignout}>Logout</MenuItem>
@@ -201,6 +205,8 @@ const Navbar = () => {
                       </SearchIconWrapper>
                       <StyledInputBase
                           placeholder="Search…"
+                          value={search}
+                          onChange={e => setSearch(e.target.value)}
                           inputProps={{ 'aria-label': 'search' }}
                       />
                   </Search>

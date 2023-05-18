@@ -6,39 +6,49 @@ import RandomRecipeCard from '../components/RandomRecipeCard';
 
 const options = [
   {
-    src: "https://cdn-icons-png.flaticon.com/128/8346/8346899.png",
-    alt: "hamburger",
-    text: "Sandwiches"
+    src: "https://cdn-icons-png.flaticon.com/128/783/783043.png",
+    alt: "seafood",
+    text: "Seafood"
   },
   {
     src: "https://cdn-icons-png.flaticon.com/128/2515/2515263.png",
-    alt: "salad",
+    alt: "vegetarian",
     text: "Vegetarian"
   },
   {
-    src: "https://cdn-icons-png.flaticon.com/128/1404/1404945.png",
-    alt: "pizza",
-    text: "Italian"
+    src: "https://cdn-icons-png.flaticon.com/128/3480/3480618.png",
+    alt: "pasta",
+    text: "Pasta"
   },
   {
-    src: "https://cdn-icons-png.flaticon.com/128/2718/2718224.png",
-    alt: "Ramen",
-    text: "Japanese"
+    src: "https://cdn-icons-png.flaticon.com/128/1046/1046751.png",
+    alt: "chicken",
+    text: "Chicken"
   },
   {
     src: "https://cdn-icons-png.flaticon.com/128/737/737967.png",
-    alt: "fastfood",
-    text: "American"
+    alt: "miscellaneous",
+    text: "Misc."
   },
   {
     src: "https://cdn-icons-png.flaticon.com/128/8346/8346807.png",
-    alt: "cake",
+    alt: "dessert",
     text: "Dessert"
   },
   {
-    src: "https://cdn-icons-png.flaticon.com/128/2515/2515225.png",
-    alt: "taco",
-    text: "Mexican"
+    src: "https://cdn-icons-png.flaticon.com/128/10536/10536275.png",
+    alt: "side",
+    text: "Sides"
+  },
+  {
+    src: "https://cdn-icons-png.flaticon.com/128/706/706164.png",
+    alt: "vegan",
+    text: "Vegan"
+  },
+  {
+    src: "https://cdn-icons-png.flaticon.com/128/706/706871.png",
+    alt: "starter",
+    text: "Starter",
   }
 ]
 
@@ -54,7 +64,7 @@ const Home = () => {
         <h2>Search by quisine</h2>
          <div className='quisine-list'>
           {options.map(option => (
-            <QuisineCard src={option.src} text={option.text} key={option.alt} />
+            <QuisineCard op={option} key={option.alt} />
           ))}
          </div>
       </div>

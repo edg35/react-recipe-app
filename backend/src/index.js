@@ -31,10 +31,8 @@ app.get('/api/search/:id', async (req, res) => {
 });
 
 app.get('/api/recipes/random', async (req, res) => {
-
   try {
     const response = await axios.get('http://www.themealdb.com/api/json/v1/1/random.php');
-    console.log(response.data);
     res.send(response.data);
   } catch (error) {
     res.send(error);

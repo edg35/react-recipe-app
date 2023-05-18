@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardHeader, CardMedia, IconButton, CardContent, Typography } from '@mui/material';
+import { Card, CardHeader, CardMedia, IconButton } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import useUser from '../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
@@ -10,12 +10,17 @@ const RecipeCard = ({ recipe }) => {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const getData = async () => {
-            const res = await axios.get(`api/search/${data.idMeal}`)
-            setData(res.data.meals[0])
-            setIsLoading(false)
+            try{
+                const res = await axios.get(`/api/search/${recipe.idMeal}`);
+                setData(res.data.meals[0]);
+                setIsLoading(false);
+            } catch(err){
+                setError(err.message);
+            }
         }
 
         if(isLoading){
@@ -27,7 +32,7 @@ const RecipeCard = ({ recipe }) => {
     <Card>
         <CardHeader 
             title={recipe.strMeal}
-            subheader={`${data.strArea} | ${data.strCategory} | $`}
+            subheader={`${data.strArea} | ${data.strCategory}`}
             action={
                 <IconButton aria-label="add to favorites" size="large" onClick={() =>{
                     if(!user){
@@ -44,13 +49,6 @@ const RecipeCard = ({ recipe }) => {
               src={recipe.strMealThumb}
             alt="food"
         />
-        <CardContent className='recipe-card-content'>
-            <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
-            </Typography>
-        </CardContent>
     </Card>
   )
 }
