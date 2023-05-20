@@ -75,6 +75,21 @@
   padding-left: 15px;
 }
 
+.recipe-page-heading {
+  padding-left: 25px;
+  padding-top: 25px;
+}
+
+.recipe-page-meal-title {
+  padding-left: 25px;
+  padding-top: 15px;
+  margin-bottom: 0;
+}
+
+.recipe-page-instr {
+  padding: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .hero-section {
     max-height: 20vh;

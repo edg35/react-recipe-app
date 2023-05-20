@@ -6,14 +6,11 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 
@@ -100,10 +97,6 @@ const Navbar = () => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const handleSearch = () => {
-        navigate(`/recipes/${search}`);
-    }
-
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -144,26 +137,6 @@ const Navbar = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="error">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
-            <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show 17 new notifications"
-                    color="inherit"
-                >
-                    <Badge badgeContent={17} color="error">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p>
-            </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     size="large"
@@ -212,20 +185,6 @@ const Navbar = () => {
                   </Search>
                   <Box sx={{ flexGrow: 1 }} />
                   <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                      <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                          <Badge badgeContent={4} color="error">
-                              <MailIcon />
-                          </Badge>
-                      </IconButton>
-                      <IconButton
-                          size="large"
-                          aria-label="show 17 new notifications"
-                          color="inherit"
-                      >
-                          <Badge badgeContent={17} color="error">
-                              <NotificationsIcon />
-                          </Badge>
-                      </IconButton>
                       {user
                         ? <IconButton
                             size="large"

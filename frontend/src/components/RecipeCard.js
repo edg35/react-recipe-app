@@ -28,6 +28,10 @@ const RecipeCard = ({ recipe }) => {
         }
     }, []);
 
+  if(error){
+    return <div>{error}</div>
+  }
+
   return (
     <Card>
         <CardHeader 
