@@ -11,6 +11,10 @@ const RandomRecipeCard = () => {
   const [recipe, setRecipe] = useState({});
   const [loading, setLoading] = useState(true);
 
+  const handleNavigate = (id) => {
+    navigate(`/recipe/${id}`);
+  };
+
   useEffect(() => {
     const getRecipe = async () => {
       try{
@@ -49,6 +53,7 @@ const RandomRecipeCard = () => {
             height="194"
             src={recipe.strMealThumb}
             alt="food"
+            onClick={handleNavigate(handleNavigate(recipe.id))}
         />
     </Card>
   )

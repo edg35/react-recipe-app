@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardHeader, CardMedia, IconButton } from '@mui/material';
+import { Card, CardHeader, CardMedia, IconButton, CardActionArea } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import useUser from '../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,10 @@ const RecipeCard = ({ recipe }) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+
+    const handleNavigate = (id) => {
+        navigate(`/recipe/${id}`);
+    };
 
     useEffect(() => {
         const getData = async () => {
@@ -50,11 +54,12 @@ const RecipeCard = ({ recipe }) => {
         <CardMedia
             component="img"
             height="194"
-              src={recipe.strMealThumb}
+            src={recipe.strMealThumb}
             alt="food"
+            onClick={handleNavigate(recipe.idMeal)}
         />
     </Card>
   )
 }
 
-export default RecipeCard
+export default RecipeCard;

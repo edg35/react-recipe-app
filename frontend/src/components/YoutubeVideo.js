@@ -19,4 +19,4 @@ const YoutubeVideo = ({ str }) => {
   )
 }
 
-export default YoutubeVideo
+export default YoutubeVideo;
