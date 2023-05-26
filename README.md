@@ -22,3 +22,10 @@ The React App is currently not hosted on any dedicated servers, so in order to v
 
 For the fronted this app uses React.js and Material UI. The backend uses an express node server to handle requests from the frontend and axois to make requests to the recipe
 api. The database used to save user information is MongoDB. Authentification is handled by Firebase Auth. 
+
+## Contribution
+Please follow the steps below when making contributions:
+- Open a sepereate branch with syntax feature/{insertFeatureName}
+- Make sure to doccument the changes you made in your code
+- Squash all the merges when submiting
+- Submit a pull request detailing the changes that were made
