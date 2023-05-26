@@ -7,7 +7,7 @@ a recipe, they will see a list of ingredients, directions, and also a short yout
 and the MealDB to provide users with the recipes and youtube videos. The main goal of this application was to create a place where users can look at and
 save recipies that they like to thier profile.
 
-## How to View:
+## How to View
 The React App is currently not hosted on any dedicated servers, so in order to view, you will have to follow these steps
 - Make sure you have node installed on your machine
 - Download the project from this repo onto your local machine
