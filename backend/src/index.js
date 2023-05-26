@@ -53,6 +53,11 @@ app.get('/api/recipes/random', async (req, res) => {
 
 });
 
+app.get('/api/:id/like', async (req, res) => {
+  const { id } = req.params;
+
+});
+
 app.listen(8000, () => {
   console.log('Example app listening on port 8000!');
 });
